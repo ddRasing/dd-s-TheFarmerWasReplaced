@@ -1,0 +1,36 @@
+  #Подсолнечный пылесос
+def sunflower_grind():
+	
+	clear()
+  #Переменные для счетчика
+	i = 15
+	char = 0
+	n = get_world_size()**2
+	
+  #Цикл действия
+	while True:
+		for drone_move in range(get_world_size()):
+			for drone_move_l in range(get_world_size()):
+				if get_entity_type() == Entities.Grass:
+					till()
+					plant(Entities.Sunflower)
+				plant(Entities.Sunflower)
+				move(North)
+			move(East)
+		while True:
+			for drone_move in range(get_world_size()):
+				for drone_move_l in range(get_world_size()):
+					if measure() == i:
+						if can_harvest():
+							harvest()
+					char += 1
+					move(North)
+				move(East)
+			if char == n:
+				i -= 1
+				char = 0
+			print(i)
+			if i == 6:
+				break
+		i = 15
+sunflower_grind() 

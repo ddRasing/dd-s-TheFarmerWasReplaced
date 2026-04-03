@@ -1,0 +1,41 @@
+def gold_grind():
+	
+	clear()
+	n = get_world_size()
+	index = 0
+	directions = [North, East, South, West]
+	while True:
+		while True:
+			for drone_move in range(get_world_size()):
+				for drone_move in range(get_world_size()):
+					plant(Entities.Bush)
+					move(North)
+					use_item(Items.Weird_Substance, n)
+				move(East)
+			break
+  #Поиск и обнаружение
+		while True:
+  #проверка клеток
+			right_index = (index + 1) % 4
+			left_index = (index - 1) % 4
+			back_index = (index + 2) % 4
+	
+			if can_move(directions[right_index]):
+				index = right_index
+				move(directions[right_index])
+		
+			elif can_move(directions[index]):
+				move(directions[index])
+		
+			elif can_move(directions[left_index]):
+				index = left_index
+				move(directions[left_index])
+		
+			else:
+				index = back_index
+				move(directions[left_index])
+			if get_entity_type() == Entities.Treasure:
+				harvest()
+				break
+	return
+gold_grind()

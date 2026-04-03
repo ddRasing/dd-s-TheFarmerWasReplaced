@@ -1,0 +1,28 @@
+def pumpkin_grind():
+	
+	clear()
+	n = get_world_size() * get_world_size()
+	print(n)
+	char = 0
+	while True:
+		
+		for drone_move_l in range(get_world_size()):
+			for drone_move in range(get_world_size()):
+				if get_entity_type() == Entities.Grass:
+					till()
+				if get_entity_type() == Entities.Dead_Pumpkin:
+					harvest()
+				if get_entity_type() == Entities.Pumpkin:
+					char += 1
+				plant(Entities.Pumpkin)
+				move(North)
+			move(East)
+			
+		if char == n:
+			harvest()
+
+		if get_pos_x() == 0 and get_pos_y() == 0:
+			char = 0
+		
+	return
+pumpkin_grind()

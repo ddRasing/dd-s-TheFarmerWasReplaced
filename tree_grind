@@ -1,0 +1,27 @@
+  #Попытка высаживания деревьев
+  #Функция на определение четного
+def tree_grind():
+	clear()
+  #Определение четного, нечетного
+	while True:
+		for drone_move in range(get_world_size()):
+			if get_pos_y() % 2 == 0:
+				if get_pos_x() % 2 == 0:
+					if can_harvest():
+						harvest()
+					plant(Entities.Tree)
+			if can_harvest():
+				harvest()
+			move(North)
+			
+		move(East)
+		for drone_move in range(get_world_size()):
+			if not get_pos_y() % 2 == 0:
+				if not get_pos_x() % 2 == 0:
+					plant(Entities.Tree)
+			move(North)
+			if can_harvest():
+				harvest()
+		move(East)
+	return
+tree_grind()
